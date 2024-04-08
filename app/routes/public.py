@@ -49,13 +49,13 @@ def google_signup():
 	# scope: Las autorizaciones solicitadas que se le pedirán al usuario durante el proceso de autenticación.
 	request_uri = client.prepare_request_uri(
 		authorization_endpoint,
-		redirect_uri="/callback",
+		redirect_uri=request.base_url + "/callback",
 		scope=["openid", "email", "profile"],
 	)
 
 	return redirect(request_uri)
 
-@public_blueprint.route("/callback")
+@public_blueprint.route("/google_signup/callback")
 def callback():
 
 	# Este "code" es un código de autorización que Google envía de vuelta a tu aplicación después
